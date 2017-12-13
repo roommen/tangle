@@ -26,8 +26,8 @@
                 padding-bottom : 50px;
                 background: rgba(0, 0, 0, 0.5);
                 margin: auto;
-                margin-top: 7.5%;
-                padding-top: 50px;
+                margin-top: 5.5%;
+                padding-top: 40px;
                 border-radius: 15px;
             }
             img {
@@ -89,22 +89,21 @@
                         </div>
                         <div class="col-md-12"><br>
                             <label>Block Size</label><br>
-                            <input type="text" class="col-md-6"/>
+                            <input type="text" value="150" maxlength="3" class="col-md-10"/>
                         </div>
                         <div class="col-md-12"><br>
                             <label>Product Range</label><br>
-                            <input type="text" class="col-md-2"/>
+                            <input id="prodrange-from" onkeyup="rangeKeyUp()" type="text" value="4" maxlength="2" class="col-md-4"/>
                             <label class="col-md-1">-</label>
-                            <input type="text" class="col-md-2"/>
+                            <input id="prodrange-to" onkeyup="rangeKeyUp()" type="text" value="12" maxlength="2" class="col-md-4"/>
+                            <label id="alert" style="color:red;display:none;text-shadow: -1px 0 white;">*Range count should be 8 digits.</label>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div>
                             <div><img src="arrow.png" alt="client-1 image" style="padding-top:30px;"/></div>
                             <center>Message</center>
-                            <div style="height: 100px;"><textarea id="plain-text" class="col-md-12" maxlength="3000"></textarea></div>
-                            <center>Encrypted Message</center>
-                            <div style="height: 100px;"><textarea id="encrypted-text" class="col-md-12" maxlength="3000" disabled></textarea></div>
+                            <div style="height: 120px;"><textarea id="plain-text" class="col-md-12" maxlength="150"></textarea></div>
                             <div style="text-align: center;"><button id="t-btn" class="btn btn-large btn-primary">Send</button></div>
                         </div>
                     </div>
@@ -127,7 +126,8 @@
 
                 var product = ts * rnd;
                 $('#product').text(product);
-            })
+            });
         </script>
+        <script src="encryption.js"></script>
     </body>
 </html>
