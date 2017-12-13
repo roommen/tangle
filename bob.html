@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Bob</title>
+        <title>Sender View</title>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -11,12 +11,20 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <style>
             body {
-                background: #E5E5E5;
+                background: url('digitalencryption.jpg');
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-position: center; 
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            label {
+                color: white;
             }
             .container {
-                width: 70%;
+                width: 80%;
                 padding-bottom : 50px;
-                background: #03a87c;
+                background: rgba(0, 0, 0, 0.5);
                 margin: auto;
                 margin-top: 7.5%;
                 padding-top: 50px;
@@ -40,11 +48,20 @@
                 color: white;
                 font-weight : bold;
                 padding-top: 10px;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .lbl {
+                padding-left: 50px;
             }
 
             #client-img, #arrow-img {
                 -webkit-transform: scaleX(-1);
                 transform: scaleX(-1);
+            }
+
+            input, textarea {
+                border-radius: 5px;
             }
         </style>
     </head>
@@ -54,13 +71,13 @@
                 <div class="col-md-12">
                     <div class="col-md-3">
                         <div style="width:70%;margin:auto;">
-                            <img src="client1.png" alt="client-1 image" align="middle" /><br>
+                            <img src="desktop.png" alt="client-1 image" align="middle" /><br>
                             <label class="lbl">Alice</label>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div>
-                            <div><img id="arrow-img" src="arrow.png" alt="client-1 image" /></div>
+                            <div><img id="arrow-img" src="arrow.png" alt="client-1 image" style="padding-top:30px;"/></div>
                             <center>Message</center>
                             <div style="height: 100px;"><textarea id="plain-text" class="col-md-12 form-control" maxlength="3000"></textarea></div>
                             <center>Encrypted Message</center>
@@ -70,7 +87,7 @@
                     </div>
                     <div class="col-md-3">
                         <div style="width:70%;margin:auto;">
-                            <img id="client-img" src="client1.png" alt="client-1 image" align="middle" /><br>
+                            <img id="client-img" src="desktop.png" alt="client-1 image" align="middle" /><br>
                             <label class="lbl">Bob</label>
                         </div>
                     </div>

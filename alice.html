@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Alice</title>
+        <title>Sender View</title>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -11,12 +11,20 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <style>
             body {
-                background: #E5E5E5;
+                background: url('digitalencryption.jpg');
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-position: center; 
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            label {
+                color: white;
             }
             .container {
-                width: 70%;
+                width: 80%;
                 padding-bottom : 50px;
-                background: #03a87c;
+                background: rgba(0, 0, 0, 0.5);
                 margin: auto;
                 margin-top: 7.5%;
                 padding-top: 50px;
@@ -40,11 +48,20 @@
                 color: white;
                 font-weight : bold;
                 padding-top: 10px;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .lbl {
+                padding-left: 50px;
             }
 
             #client-img {
                 -webkit-transform: scaleX(-1);
                 transform: scaleX(-1);
+            }
+
+            input, textarea {
+                border-radius: 5px;
             }
         </style>
     </head>
@@ -52,30 +69,65 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
+                    <div class="col-md-4">
+                        <label>Linux Epoch Time : <span id="epoch-time"></span></label>
+                    </div>
+                    <div class="col-md-4">
+                        <label>Random Series : <span id="rnd-series"></span></label>
+                    </div>
+                    <div class="col-md-4">
+                        <label>Product : <span id="product"></span></label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
                     <div class="col-md-3">
                         <div style="width:70%;margin:auto;">
-                            <img src="client1.png" alt="client-1 image" align="middle" /><br>
-                            <label class="lbl"><b>Alice</b></label>
+                            <img id="client-img" src="desktop.png" alt="client-1 image" align="middle" /><br>
+                            <label class="lbl">Alice</label>
+                        </div>
+                        <div class="col-md-12"><br>
+                            <label>Block Size</label><br>
+                            <input type="text" class="col-md-6"/>
+                        </div>
+                        <div class="col-md-12"><br>
+                            <label>Product Range</label><br>
+                            <input type="text" class="col-md-2"/>
+                            <label class="col-md-1">-</label>
+                            <input type="text" class="col-md-2"/>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div>
-                            <div><img src="arrow.png" alt="client-1 image" /></div>
+                            <div><img src="arrow.png" alt="client-1 image" style="padding-top:30px;"/></div>
                             <center>Message</center>
-                            <div style="height: 100px;"><textarea id="plain-text" class="col-md-12 form-control" maxlength="3000"></textarea></div>
+                            <div style="height: 100px;"><textarea id="plain-text" class="col-md-12" maxlength="3000"></textarea></div>
                             <center>Encrypted Message</center>
-                            <div style="height: 100px;"><textarea id="encrypted-text" class="col-md-12 form-control" maxlength="3000" disabled></textarea></div>
+                            <div style="height: 100px;"><textarea id="encrypted-text" class="col-md-12" maxlength="3000" disabled></textarea></div>
                             <div style="text-align: center;"><button id="t-btn" class="btn btn-large btn-primary">Send</button></div>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div style="width:70%;margin:auto;">
-                            <img id="client-img" src="client1.png" alt="client-1 image" align="middle" /><br>
-                            <label class="lbl"><b>Bob</b></label>
+                            <img src="desktop.png" alt="client-1 image" align="middle" /><br>
+                            <label class="lbl">Bob</label>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <script>
+            $(document).ready(function(){
+                var ts = Math.round((new Date()).getTime() / 1000);
+                $('#epoch-time').text(ts);
+
+                var rnd = Math.floor(Math.random() * 9999) + 1111;
+                $('#rnd-series').text(rnd);
+
+                var product = ts * rnd;
+                $('#product').text(product);
+            })
+        </script>
     </body>
 </html>
