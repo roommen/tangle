@@ -40,7 +40,6 @@ $("#encrypt-btn").click(function(){
         success : function(resp){
             result = $.parseJSON(resp);
             encrypted_message = result['result'];
-            alert(encrypted_message);
             window.open(
                 'http://alice.runcy.me/bob.html?message=' + encrypted_message,
                 '_blank' // <- This is what makes it open in a new window.
