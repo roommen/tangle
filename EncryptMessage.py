@@ -1,4 +1,3 @@
-import time
 import string
 from collections import OrderedDict
 from common.series import *
@@ -10,7 +9,7 @@ def crange(start, end, modulo):
         yield start
         start += 1
 
-def encrypt_message(message, product, prod_range_from, prod_range_to):
+def encrypt_message(message, product):
     ########################################
     ####      Encryption Algorithm      ####
     ########################################
@@ -19,9 +18,9 @@ def encrypt_message(message, product, prod_range_from, prod_range_to):
     master_key = product
     
     #generate series count
-    series_generate_count = str(master_key)[prod_range_from:prod_range_to]
-    series_generate_count = int(series_generate_count.replace(series_generate_count[0:2],'10'))
-    series_generate_count = series[next(x[0] for x in enumerate(series) if x[1] > series_generate_count)]
+    series_generate_count = series[next(x[0] for x in enumerate(series) if x[1] > master_key)]
+
+    print series_generate_count
 
     #generate series based on message length
     slice_length = series.index(series_generate_count)
@@ -68,14 +67,12 @@ def encrypt_message(message, product, prod_range_from, prod_range_to):
     for i in range(0,mac):
         if final_char_ascii_pair[message[i]][0] == ord(message[i]):
             encrypted_message += chr(random_series[i][final_char_ascii_pair[message[i]][1]])
-    
-    return encrypted_message
 
+    return encrypted_message
 
 def lambda_handler(event, context):
     message = event['message']
     product = event['product']
     prod_range_from = event['pf_from']
     prod_range_to = event['pr_to']
-
     return encrypt_message(message, product, prod_range_from, prod_range_to)
