@@ -1,6 +1,6 @@
 import string
 from collections import OrderedDict
-from common.series import *
+from common.prime import series
 
 character_list = " " + string.punctuation + string.digits + string.ascii_uppercase + string.ascii_lowercase
 

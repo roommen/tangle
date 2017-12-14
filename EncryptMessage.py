@@ -1,6 +1,6 @@
 import string
 from collections import OrderedDict
-from common.series import *
+from common.prime import series
 
 character_list = " " + string.punctuation + string.digits + string.ascii_uppercase + string.ascii_lowercase
 
@@ -19,8 +19,6 @@ def encrypt_message(message, product):
     
     #generate series count
     series_generate_count = series[next(x[0] for x in enumerate(series) if x[1] > master_key)]
-
-    print series_generate_count
 
     #generate series based on message length
     slice_length = series.index(series_generate_count)
