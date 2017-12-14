@@ -13,7 +13,7 @@ function decryptMessage(){
         data : {"message":message, "product":product},
         success : function(resp){
             result = $.parseJSON(data);
-            decrypted_message = result['decrypted_message'];
+            decrypted_message = result['result'];
             $("#encrypted-text").val(message);
             $("#decrypted-text").val(decrypted_message);
         }
