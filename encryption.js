@@ -34,9 +34,10 @@ $("#encrypt-btn").click(function(){
     console.log(product);
     localStorage.setItem("product", product);
     $.ajax({
-        url :'https://pjaqzs646c.execute-api.ap-south-1.amazonaws.com/tangle/encrypt?message=' + message + "&product=" + product,
+        url :'https://pjaqzs646c.execute-api.ap-south-1.amazonaws.com/tangle/encrypt',
         type : 'GET',
         dataType: 'html',
+        data : {"message":message, "product":product},
         success : function(resp){
             result = $.parseJSON(resp);
             encrypted_message = result['result'];

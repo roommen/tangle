@@ -7,7 +7,7 @@ function decryptMessage(){
     var message = url.searchParams.get("message");
     var product = localStorage.getItem("product");
     $.ajax({
-        url :'https://pjaqzs646c.execute-api.ap-south-1.amazonaws.com/tangle/decrypt?message=' + message + "&product=" + product,
+        url :'https://pjaqzs646c.execute-api.ap-south-1.amazonaws.com/tangle/decrypt',
         type : 'GET',
         dataType: 'html',
         data : {"message":message, "product":product},
