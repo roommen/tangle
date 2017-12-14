@@ -73,6 +73,4 @@ def encrypt_message(message, product):
 def lambda_handler(event, context):
     message = event['message']
     product = event['product']
-    prod_range_from = event['pf_from']
-    prod_range_to = event['pr_to']
-    return encrypt_message(message, product, prod_range_from, prod_range_to)
+    return encrypt_message(message, product)
