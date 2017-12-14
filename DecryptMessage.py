@@ -18,7 +18,7 @@ def decrypt_message(message, product):
     master_key = product
 
     #generate series count
-    series_generate_count = master_key
+    series_generate_count = series[next(x[0] for x in enumerate(series) if x[1] > master_key)]
 
     #generate series based on message length
     slice_length = series.index(series_generate_count)
