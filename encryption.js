@@ -37,6 +37,7 @@ $("#encrypt-btn").click(function(){
         url :'https://pjaqzs646c.execute-api.ap-south-1.amazonaws.com/tangle/encrypt',
         type : 'GET',
         dataType: 'html',
+        headers: {"Access-Control-Allow-Origin:": "*"},
         data : {"message":message, "product":product},
         success : function(resp){
             result = $.parseJSON(resp);
