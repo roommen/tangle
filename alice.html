@@ -22,7 +22,7 @@
                 color: white;
             }
             .container {
-                width: 80%;
+                width: 89%;
                 padding-bottom : 50px;
                 background: rgba(0, 0, 0, 0.5);
                 margin: auto;
@@ -35,7 +35,7 @@
                 max-height: 100%;
             }
 
-            #t-btn {
+            #encrypt-btn {
                 margin-top: 10px;
                 font-weight: bold;
             }
@@ -89,22 +89,24 @@
                         </div>
                         <div class="col-md-12"><br>
                             <label>Block Size</label><br>
-                            <input type="text" value="150" maxlength="3" class="col-md-10"/>
+                            <input type="text" value="150" maxlength="3" class="col-md-9"/>
                         </div>
                         <div class="col-md-12"><br>
                             <label>Product Range</label><br>
-                            <input id="prodrange-from" onkeyup="rangeKeyUp()" type="text" value="4" maxlength="2" class="col-md-4"/>
-                            <label class="col-md-1">-</label>
-                            <input id="prodrange-to" onkeyup="rangeKeyUp()" type="text" value="12" maxlength="2" class="col-md-4"/>
+                            <input id="prodrange-from" onkeyup="rangeKeyUp()" type="text" value="4" maxlength="2" class="col-md-3"/>
+                            <label class="col-md-3" style="text-align:center;">-</label>
+                            <input id="prodrange-to" onkeyup="rangeKeyUp()" type="text" value="12" maxlength="2" class="col-md-3"/>
+                            <label class="col-md-3" id="digits"></label>
                             <label id="alert" style="color:red;display:none;text-shadow: -1px 0 white;">*Range count should be 8 digits.</label>
                         </div>
+                        <div class="col-md-12"><label id="digits"></label></div>
                     </div>
                     <div class="col-md-6">
                         <div>
                             <div><img src="arrow.png" alt="client-1 image" style="padding-top:30px;"/></div>
                             <center>Message</center>
                             <div style="height: 120px;"><textarea id="plain-text" class="col-md-12" maxlength="150"></textarea></div>
-                            <div style="text-align: center;"><button id="t-btn" class="btn btn-large btn-primary">Send</button></div>
+                            <div style="text-align: center;"><button id="encrypt-btn" class="btn btn-large btn-primary">Send</button></div>
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -126,6 +128,10 @@
 
                 var product = ts * rnd;
                 $('#product').text(product);
+
+                cropped_digits = String($('#product').text());
+                cropped_digits = cropped_digits.slice($("#prodrange-from").val(), $("#prodrange-to").val());
+                $("#digits").text(cropped_digits);
             });
         </script>
         <script src="encryption.js"></script>
