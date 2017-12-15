@@ -77,6 +77,6 @@ def decrypt_message(message, product):
 
 
 def lambda_handler(event, context):
-    message = urllib.unquote(urllib.unquote(event['message']))
+    message = urllib.unquote(event['message'])
     product = event['product']
     return decrypt_message(message, product)
