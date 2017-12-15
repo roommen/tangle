@@ -1,6 +1,8 @@
 import string
 from collections import OrderedDict
 from common.prime import series
+import urllib
+
 
 character_list = " " + string.punctuation + string.digits + string.ascii_uppercase + string.ascii_lowercase
 
@@ -75,6 +77,6 @@ def decrypt_message(message, product):
 
 
 def lambda_handler(event, context):
-    message = event['message']
+    message = urllib.unquote(urllib.unquote(event['message']))
     product = event['product']
     return decrypt_message(message, product)
