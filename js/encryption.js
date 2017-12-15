@@ -25,27 +25,32 @@ function replaceStr(str, pos, value){
     return arr.join('');
 }
 
+function encodeData(s){
+    return encodeURIComponent(s).replace(/\-/g, "%2D").replace(/\_/g, "%5F").replace(/\./g, "%2E").replace(/\!/g, "%21").replace(/\~/g, "%7E").replace(/\*/g, "%2A").replace(/\'/g, "%27").replace(/\(/g, "%28").replace(/\)/g, "%29");
+}
+
+
 //Ajax call for Encryption
 $("#encrypt-btn").click(function(){
     var message = $("#plain-text").val();
     var product = String($("#digits").text());
+    var buffer = $("#buf-size").val();
     product = replaceStr(product, 0, '1');
     product = replaceStr(product, 1, '0');
-    console.log(product);
     localStorage.setItem("product", product);
     $.ajax({
         url :'https://pjaqzs646c.execute-api.ap-south-1.amazonaws.com/tangle/encrypt',
         type : 'GET',
         dataType: 'html',
-        headers: {"Access-Control-Allow-Origin:": "*"},
-        data : {"message":message, "product":product},
+        data : {"message" : message, "product" : product, "buffer" : buffer},
         success : function(resp){
             result = $.parseJSON(resp);
             encrypted_message = result['result'];
+            encryption_url = 'http://alice.runcy.me/bob.html?message=' + encodeData(encrypted_message);
             window.open(
-                'http://alice.runcy.me/bob.html?message=' + encrypted_message,
+                encryption_url,
                 '_blank' // <- This is what makes it open in a new window.
               );
         }
     });
-})
+});

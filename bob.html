@@ -1,99 +1,44 @@
 <html>
     <head>
-        <title>Sender View</title>
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-        <!-- jQuery library -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-        <!-- Latest compiled JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <style>
-            body {
-                background: url('digitalencryption.jpg');
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-                background-position: center; 
-                font-family: Arial, Helvetica, sans-serif;
-            }
-
-            label {
-                color: white;
-            }
-            .container {
-                width: 89%;
-                padding-bottom : 50px;
-                background: rgba(0, 0, 0, 0.5);
-                margin: auto;
-                margin-top: 7.5%;
-                padding-top: 50px;
-                border-radius: 15px;
-            }
-            img {
-                max-width: 100%;
-                max-height: 100%;
-            }
-
-            #t-btn {
-                margin-top: 10px;
-                font-weight: bold;
-            }
-
-            #encrypted-text, #decrypted-text {
-                height: 100px;
-            }
-
-            .lbl, center {
-                color: white;
-                font-weight : bold;
-                padding-top: 10px;
-                font-family: Arial, Helvetica, sans-serif;
-            }
-
-            .lbl {
-                padding-left: 50px;
-            }
-
-            #client-img, #arrow-img {
-                -webkit-transform: scaleX(-1);
-                transform: scaleX(-1);
-            }
-
-            input, textarea {
-                border-radius: 5px;
-            }
-        </style>
+        <title>Alice</title>
+        <link rel="stylesheet" href="./css/bootstrap.min.css">
+        <link rel="stylesheet" href="./css/style.css">
+        <script src=".js/jquery.min.js"></script>
+        <script src="./js/bootstrap.min.js"></script>
     </head>
     <body>
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="col-md-3">
-                        <div style="width:70%;margin:auto;">
-                            <img id="client-img" src="desktop.png" alt="client-1 image" align="middle" /><br>
-                            <label class="lbl">Alice</label>
-                        </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-6">
+                        <center>Encrypted Message</center>
+                        <div style="height: 100px;"><textarea id="encrypted-text" class="col-md-12 form-control" maxlength="150" disabled></textarea></div>
                     </div>
+                    <div class="col-md-4"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-1"></div>
                     <div class="col-md-6">
                         <div>
-                            <div><img src="arrow.png" alt="client-1 image" style="padding-top:30px;"/></div>
-                            <center>Encrypted Message</center>
-                            <div style="height: 100px;"><textarea id="encrypted-text" class="col-md-12 form-control" maxlength="3000"></textarea></div>
+                            <div><img src="./img/data_transfer.png" alt="Alice image" style="padding-top:30px;"/></div>
+                            
                             <center>Decrypted Message</center>
-                            <div style="height: 100px;"><textarea id="decrypted-text" class="col-md-12 form-control" maxlength="3000" disabled></textarea></div>
+                            <div style="height: 100px;"><textarea id="decrypted-text" class="col-md-12 form-control" maxlength="150" disabled></textarea></div>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div style="width:70%;margin:auto;">
-                            <img src="desktop.png" alt="client-1 image" align="middle" /><br>
-                            <label class="lbl">Bob</label>
+                            <img src="./img/desktop.png" alt="Bob image" align="middle" /><br>
+                            <center>Bob</center>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <script src="decryption.js"></script>
+        <script src="./js/decryption.js"></script>
         <script>
             $(document).ready(function(){
                 decryptMessage();
