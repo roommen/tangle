@@ -9,7 +9,7 @@ def crange(start, end, modulo):
         yield start
         start += 1
 
-def encrypt_message(message, product):
+def encrypt_message(message, product, buffer):
     ########################################
     ####      Encryption Algorithm      ####
     ########################################
@@ -56,7 +56,7 @@ def encrypt_message(message, product):
 
         #generate random series of message length 
         for i in range(0,mac):
-            if(len(random_series) < 150):
+            if(len(random_series) < buffer):
                 random_series.append((random_series[i]))
 
         #encryption of message
@@ -73,4 +73,5 @@ def encrypt_message(message, product):
 def lambda_handler(event, context):
     message = event['message']
     product = event['product']
-    return encrypt_message(message, product)
+    buffer = event['buffer']
+    return encrypt_message(message, product, buffer)
