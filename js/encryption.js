@@ -51,6 +51,7 @@ $("#encrypt-btn").click(function(){
                 encryption_url,
                 '_blank' // <- This is what makes it open in a new window.
               );
+            window.location.reload();
         }
     });
 });
