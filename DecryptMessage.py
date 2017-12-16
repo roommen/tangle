@@ -6,7 +6,7 @@ import urllib
 
 character_list = " " + string.punctuation + string.digits + string.ascii_uppercase + string.ascii_lowercase
 
-def crange(start, end, modulo):
+def crange(start, end):
     while start < end:
         yield start
         start += 1
@@ -43,8 +43,8 @@ def decrypt_message(message, product):
         random_series = []
 
         for i in series_of_prime_numbers:
-            temp1 = list(crange(i,127,2**3))
-            temp2 = list(crange(32,i,2**3))
+            temp1 = list(crange(i,127))
+            temp2 = list(crange(32,i))
             temp = temp1 + temp2
             random_series.append(temp)
 
